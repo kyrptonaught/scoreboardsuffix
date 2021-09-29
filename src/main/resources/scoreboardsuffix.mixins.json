@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "package": "net.kyrptonaught.scoreboardsuffix.mixin",
+  "compatibilityLevel": "JAVA_16",
+  "mixins": [
+    "TeamMixin",
+    "ServerScoreboardMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

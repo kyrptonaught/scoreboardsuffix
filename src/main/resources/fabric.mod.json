@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "scoreboardsuffix",
+  "version": "1.0.0-1.17",
+  "name": "Scoreboard Suffix",
+  "description": "Allows the creation of larger more advanced dynamic suffixes in the tab list",
+  "authors": [
+    "kyrptonaught"
+  ],
+  "contact": {
+    "homepage": "https://github.com/kyrptonaught/scoreboardsuffix",
+    "sources": "https://github.com/kyrptonaught/scoreboardsuffix"
+  },
+  "license": "MIT",
+  "icon": "assets/scoreboardsuffix/icon.png",
+  "environment": "server",
+  "entrypoints": {
+    "main": [
+      "net.kyrptonaught.scoreboardsuffix.ScoreboardSuffixMod"
+    ]
+  },
+  "mixins": [
+    {
+      "config": "scoreboardsuffix.mixins.json",
+      "environment": "server"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=0.11.3",
+    "fabric": "*",
+    "java": ">=16"
+  }
+}
