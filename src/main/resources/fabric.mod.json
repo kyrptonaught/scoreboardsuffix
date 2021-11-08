@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "scoreboardsuffix",
-  "version": "1.0.0-1.17",
+  "version": "1.0.1-1.17",
   "name": "Scoreboard Suffix",
   "description": "Allows the creation of larger more advanced dynamic suffixes in the tab list",
   "authors": [

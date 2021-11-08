@@ -2,7 +2,6 @@ package net.kyrptonaught.scoreboardsuffix;
 
 import blue.endless.jankson.api.SyntaxError;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.nbt.NbtList;
 import net.minecraft.world.PersistentState;
 
 import java.util.HashMap;
@@ -12,6 +11,7 @@ public class PlayerSuffixStorage extends PersistentState {
     public final HashMap<String, HashMap<String, String>> playerFonts = new HashMap<>();
     public String rawSuffixFormat;
     public SuffixFormat suffixFormat;
+
     public PlayerSuffixStorage() {
         super();
     }
@@ -52,6 +52,7 @@ public class PlayerSuffixStorage extends PersistentState {
             e.printStackTrace();
         }
     }
+
     public String getFont(String playerName, String placeholder) {
         if (playerFonts.containsKey(playerName)) {
             return playerFonts.get(playerName).getOrDefault(placeholder, placeholder);
