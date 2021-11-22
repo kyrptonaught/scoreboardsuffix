@@ -43,13 +43,16 @@ public abstract class ServerPlayerEntityMixin extends PlayerEntity {
         ScoreboardSuffixMod.playerSuffixStorage.suffixFormat.scoreboardSuffixes.forEach(newSuffix -> {
             if (newSuffix instanceof SuffixFormat.ScoreboardSuffix) {
                 String scoreboardName = newSuffix.suffix;
-                int score = scoreboard.getPlayerScore(player, scoreboard.getObjective(scoreboardName)).getScore();
+                int score = scoreboard.playerHasObjective(player, scoreboard.getObjective(scoreboardName)) ?
+                        scoreboard.getPlayerScore(player, scoreboard.getObjective(scoreboardName)).getScore() : 0;
                 ((SuffixFormat.ScoreboardSuffix) newSuffix).updateText(score);
             }
+
             Style style = newSuffix.displayText.getStyle();
             String fontPlaceHolder = style.getFont().toString();
             style = style.withFont(new Identifier(ScoreboardSuffixMod.playerSuffixStorage.getFont(player, fontPlaceHolder)));
             suffix.append(newSuffix.displayText.copy().setStyle(style));
+
         });
         cir.setReturnValue(suffix);
     }

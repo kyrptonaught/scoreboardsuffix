@@ -10,7 +10,7 @@ public class PlayerSuffixStorage extends PersistentState {
 
     public final HashMap<String, HashMap<String, String>> playerFonts = new HashMap<>();
     public String rawSuffixFormat;
-    public SuffixFormat suffixFormat;
+    public SuffixFormat suffixFormat = new SuffixFormat();
 
     public PlayerSuffixStorage() {
         super();
@@ -21,13 +21,15 @@ public class PlayerSuffixStorage extends PersistentState {
         cman.setSuffixFormatInput(tag.getString("suffixformat"));
 
         NbtCompound playersNBT = (NbtCompound) tag.get("playerFonts");
-        playersNBT.getKeys().forEach(playerName -> {
-            NbtCompound playerFontsNBT = (NbtCompound) playersNBT.get(playerName);
-            playerFontsNBT.getKeys().forEach(placeholder -> {
-                String font = playerFontsNBT.getString(placeholder);
-                cman.setFont(playerName, placeholder, font);
+        if (playersNBT != null)
+            playersNBT.getKeys().forEach(playerName -> {
+                NbtCompound playerFontsNBT = (NbtCompound) playersNBT.get(playerName);
+                if (playerFontsNBT != null)
+                    playerFontsNBT.getKeys().forEach(placeholder -> {
+                        String font = playerFontsNBT.getString(placeholder);
+                        cman.setFont(playerName, placeholder, font);
+                    });
             });
-        });
         return cman;
     }
 
@@ -57,7 +59,7 @@ public class PlayerSuffixStorage extends PersistentState {
         if (playerFonts.containsKey(playerName)) {
             return playerFonts.get(playerName).getOrDefault(placeholder, placeholder);
         }
-        return placeholder;
+        return "minecraft:default";
     }
 
     public void setFont(String playerName, String placeholder, String font) {
