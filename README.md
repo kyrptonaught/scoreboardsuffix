@@ -5,10 +5,11 @@ Server side mod adding two commands for adding a more customizable suffix for pl
 
 ## How to use
 
-This mod adds two commands: 
+This mod adds three commands: 
 
     /setScoreboardSuffix <format>
     /setSuffixFont <fontPlaceHolder> <font> [player]
+    /scoreboardSuffixForceUpdate
 `/setScoreboardSuffix` has it's own format, here's an example of how they work: `[{MinecraftJsonHere}, "String", "scoreboard=ScoreboardObjectiveHere"]`
 
 `MinecraftJsonHere` Uses standard Minecraft tellraw JSON data, you can easily generate some using [MinecraftJson.com](https://www.minecraftjson.com/). Now when referencing a font, you can reference a placeholder, which can then be set by `/setSuffixFont`
@@ -22,6 +23,8 @@ This mod adds two commands:
 `fontPlaceHolder` Can be set in `/setScoreboardSuffix` when referencing a font.
 
 `font` Is the font to set the placeholder to reference, if you are using a custom namespace in a resource pack, put the font in quotations, for example `"mypack:fontname"`.
+
+`/scoreboardSuffixForceUpdate` Simply forces the tablist to update, you may need to do this when changing a team's prefix to make it appear in tablist correctly.
 
 Here are some examples of these commands:
 
